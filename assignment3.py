@@ -44,3 +44,29 @@ def deterministic_quicksort(arr):
     right = [x for x in arr if x > pivot]
     return deterministic_quicksort(left) + middle + deterministic_quicksort(right)
 
+
+# Generate test arrays (Size: 1000)
+random_array = [random.randint(0, 1000) for _ in range(1000)]
+sorted_array = list(range(1000))
+reverse_sorted_array = sorted_array.copy()
+reverse_sorted_array.sort(reverse=True)
+repeated_array = [random.randint(1, 5) for _ in range(1000)]
+
+arrays = {
+    "Random": random_array,
+    "Sorted": sorted_array,
+    "Reverse Sorted": reverse_sorted_array,
+    "Repeated": repeated_array
+}
+
+for name, arr in arrays.items():
+    print(f"--- {name} Array ---")
+    
+    start = time.time()
+    randomized_quicksort(arr.copy())
+    print(f"Randomized: {time.time() - start:.5f} seconds")
+    
+    start = time.time()
+    deterministic_quicksort(arr.copy())
+    print(f"Deterministic: {time.time() - start:.5f} seconds\n")
+
