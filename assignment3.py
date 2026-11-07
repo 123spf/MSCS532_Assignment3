@@ -2,6 +2,9 @@ import random
 import time
 import sys
 
+# Increases recursion limit since deterministic version hits extreme worst-case depths on the sorted arrays.
+sys.setrecursionlimit(2000)
+
 def randomized_quicksort(arr):
     
     """
